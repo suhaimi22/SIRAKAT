@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kegiatan Desa | SIRAKAT</title>
+
+    <link rel="icon" href="logo_banjar.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #07120e;
+            --surface: #101f18;
+            --card: #14271d;
+            --primary: #65c18c;
+            --text: #f2f7f3;
+            --muted: #a1b5a8;
+            --line: rgba(255,255,255,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1150px;
+            margin: auto;
+            padding: 25px;
+        }
+
+        /* HEADER */
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 35px;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: var(--text);
+            background: var(--surface);
+            border: 1px solid var(--line);
+            padding: 11px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--primary);
+            color: #07120e;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .brand img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 340px;
+            padding: 55px;
+            border-radius: 25px;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(101,193,140,0.25), transparent 35%),
+                linear-gradient(120deg, #163c29, #0d2117);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .label,
+        .section-label {
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(38px, 6vw, 60px);
+            margin: 15px 0;
+        }
+
+        .hero p {
+            color: #c2d4c8;
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 530px;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 25px;
+            background: var(--primary);
+            color: #07120e;
+            padding: 13px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+            background: #8cdbab;
+        }
+
+        .hero-decoration {
+            position: absolute;
+            right: 45px;
+            bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            color: rgba(255,255,255,0.12);
+            font-weight: 800;
+        }
+
+        .hero-decoration span:first-child {
+            font-size: 100px;
+        }
+
+        .hero-decoration span:last-child {
+            font-size: 12px;
+            letter-spacing: 5px;
+        }
+
+        /* INTRO */
+
+        .intro {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+            padding: 55px 10px;
+        }
+
+        .intro h2,
+        .section-heading h2,
+        .activity-section h2 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 28px;
+            margin: 12px 0;
+        }
+
+        .intro p,
+        .section-heading p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+            max-width: 650px;
+        }
+
+        .intro-icon {
+            font-size: 65px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            width: 115px;
+            height: 115px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* KALENDER */
+
+        .calendar-section {
+            padding: 30px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 25px;
+            scroll-margin-top: 20px;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .calendar-icon {
+            font-size: 35px;
+        }
+
+        .calendar-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 20px;
+        }
+
+        .calendar-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-tag {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .calendar-top h3 {
+            margin-top: 8px;
+            font-size: 18px;
+        }
+
+        .calendar-symbol {
+            font-size: 30px;
+        }
+
+        .calendar-image {
+            width: 100%;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .calendar-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            cursor: zoom-in;
+            transition: 0.3s;
+        }
+
+        .calendar-image img:hover {
+            opacity: 0.9;
+        }
+
+        .calendar-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .calendar-footer button {
+            background: var(--primary);
+            color: #07120e;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* DAFTAR KEGIATAN */
+
+        .activity-section {
+            padding: 60px 0;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .activity-card {
+            padding: 25px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            transition: 0.3s;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .activity-icon {
+            font-size: 35px;
+            margin-bottom: 18px;
+        }
+
+        .activity-card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .activity-card p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            margin-top: 25px;
+            padding: 25px 20px 15px;
+            text-align: center;
+            background: linear-gradient(
+                180deg,
+                transparent,
+                rgba(101, 193, 140, 0.06)
+            );
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-content {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .footer h3 {
+            color: var(--primary);
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 6px;
+        }
+
+        .footer-description {
+            color: var(--text);
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .footer-line {
+            width: 45px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 10px;
+            margin: 0 auto 10px;
+        }
+
+        .footer-village {
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .footer-copy {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            opacity: 0.7;
+        }
+
+        /* MODAL FOTO */
+
+        .image-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.93);
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal img {
+            max-width: 95%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* RESPONSIVE HP */
+
+        @media (max-width: 700px) {
+
+            .container {
+                padding: 15px;
+            }
+
+            .hero {
+                min-height: 330px;
+                padding: 30px 25px;
+            }
+
+            .hero-decoration {
+                right: 15px;
+                bottom: 15px;
+                opacity: 0.5;
+            }
+
+            .hero-decoration span:first-child {
+                font-size: 65px;
+            }
+
+            .intro {
+                padding: 40px 5px;
+            }
+
+            .intro h2,
+            .section-heading h2,
+            .activity-section h2 {
+                font-size: 23px;
+            }
+
+            .intro-icon {
+                width: 75px;
+                height: 75px;
+                font-size: 40px;
+            }
+
+            .calendar-section {
+                padding: 18px;
+            }
+
+            .calendar-card {
+                padding: 12px;
+            }
+
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calendar-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <a href="index.html" class="back-button">
+                &#8592; Kembali
+            </a>
+
+            <div class="brand">
+                <img src="logo_banjar.png" alt="Logo SIRAKAT">
+                <span>SIRAKAT</span>
+            </div>
+
+        </header>
+
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="label">AGENDA DESA</span>
+
+                <h1>Kegiatan Desa</h1>
+
+                <p>
+                    Bersama membangun kebersamaan, mempererat persaudaraan,
+                    dan menjaga tradisi masyarakat Desa Sungai Rangas Tengah.
+                </p>
+
+                <a href="#kalender" class="hero-button">
+                    Lihat Kalender Kegiatan
+                    <span>&#8595;</span>
+                </a>
+
+            </div>
+
+            <div class="hero-decoration">
+                <img src="gotong.png" alt="Logo Desa" style="width: 100px; height: auto; opacity: 0.12;">
+            </div>
+
+        </section>
+
+
+        <!-- INFORMASI -->
+        <section class="intro">
+
+            <div>
+                <span class="section-label">TENTANG KEGIATAN</span>
+
+                <h2>Bergerak Bersama untuk Desa</h2>
+
+                <p>
+                    Kegiatan desa menjadi wadah bagi masyarakat untuk
+                    berkumpul, bekerja sama, dan memperkuat rasa
+                    kepedulian terhadap lingkungan serta budaya lokal.
+                </p>
+            </div>
+
+            <div class="intro-icon">
+                &#127793;
+            </div>
+
+        </section>
+
+
+        <!-- KALENDER -->
+        <section class="calendar-section" id="kalender">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">JADWAL KEGIATAN</span>
+                    <h2>Kalender Kegiatan Desa</h2>
+                    <p>
+                        Lihat jadwal kegiatan masyarakat Desa Sungai Rangas Tengah.
+                    </p>
+                </div>
+
+                <span class="calendar-icon">&#128197;</span>
+
+            </div>
+
+
+            <div class="calendar-card">
+
+                <div class="calendar-top">
+                    <div>
+                        <span class="calendar-tag">KALENDER DESA</span>
+                        <h3>Agenda Masyarakat</h3>
+                    </div>
+
+                    <span class="calendar-symbol">&#128198;</span>
+                </div>
+
+                <div class="calendar-image">
+
+                    <img
+                        src="rkalender.jpeg"
+                        alt="Kalender kegiatan Desa Sungai Rangas Tengah"
+                        id="calendarImage"
+                    >
+
+                </div>
+
+                <div class="calendar-footer">
+                    <span>&#128205; Desa Sungai Rangas Tengah</span>
+
+                    <button id="zoomButton" type="button">
+                        Perbesar Foto &#8599;
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DAFTAR KEGIATAN -->
+        <section class="activity-section">
+
+            <span class="section-label">KEGIATAN MASYARAKAT</span>
+
+            <h2>Agenda Kebersamaan</h2>
+
+            <div class="activity-grid">
+
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <img src="royong.png" alt="Gotong Royong" style="width: 90px; height: 90px; object-fit: contain;">
+                    </div>
+                    <h3>Gotong Royong</h3>
+                    <p>
+                        Kegiatan membersihkan lingkungan
+                        untuk menciptakan desa yang bersih dan nyaman.
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <img src="kiauan.png" alt="Bekiauan" style="width: 90px; height: 90px; object-fit: contain;">
+                    </div>
+                    <h3>Bekiauan</h3>
+                    <p>
+                        Menjaga kebersamaan dan mempererat
+                        hubungan antarwarga melalui tradisi masyarakat.
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <img src="behadrah.png" alt="Tradisi Hadrah" style="width: 90px; height: 90px; object-fit: contain;">
+                    </div>
+                    <h3>Tradisi Hadrah</h3>
+                    <p>
+                        Melestarikan budaya dan kesenian
+                        tradisional yang berkembang di masyarakat.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <div class="footer-content">
+
+                <h3>SIRAKAT</h3>
+
+                <p class="footer-description">
+                    Sistem Informasi dan Ruang Aksi Solidaritas Masyarakat
+                </p>
+
+                <div class="footer-line"></div>
+
+                <p class="footer-village">
+                    Desa Sungai Rangas Tengah
+                </p>
+
+                <span class="footer-copy">
+                    © 2026 SIRAKAT. Bersama Membangun Kepedulian.
+                </span>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- MODAL FOTO -->
+    <div class="image-modal" id="imageModal">
+
+        <button class="close-modal" id="closeModal" aria-label="Tutup">
+            &times;
+        </button>
+
+        <img src="rkalender.jpeg" alt="Kalender kegiatan desa">
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mengambil elemen HTML
+        const calendarImage = document.getElementById("calendarImage");
+        const imageModal = document.getElementById("imageModal");
+        const zoomButton = document.getElementById("zoomButton");
+        const closeModal = document.getElementById("closeModal");
+
+        // Membuka foto kalender
+        function openImage() {
+            imageModal.classList.add("active");
+        }
+
+        // Menutup foto kalender
+        function closeImage() {
+            imageModal.classList.remove("active");
+        }
+
+        // Klik foto untuk memperbesar
+        calendarImage.addEventListener("click", openImage);
+
+        // Klik tombol perbesar
+        zoomButton.addEventListener("click", openImage);
+
+        // Klik tombol X untuk menutup
+        closeModal.addEventListener("click", closeImage);
+
+        // Klik bagian luar foto untuk menutup
+        imageModal.addEventListener("click", function(event) {
+            if (event.target === imageModal) {
+                closeImage();
+            }
+        });
+
+        // Menutup menggunakan tombol Escape
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeImage();
+            }
+        });
+    </script>
+
+</body>
+</html>
